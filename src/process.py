@@ -1,43 +1,93 @@
+import time
+
 class Process:
-    def __init__(self, remainingIterations, sleepInterval, size):
+    def __init__(self, remainingIterations, size, sleepInterval):
         self.remainingIterations = remainingIterations
         self.sleepInterval = sleepInterval
         self.size = size
 
 class CPU:
-    def __init__(self):
-        self.os = OS(self)
+    _instance = None
+
+    def __new__(cnt):
+        if not cnt._instance:
+            cnt._instance = super().__new__(cnt)
+            cnt._instance.os = OS()
+        return cnt._instance
 
     def run(self):
-        while os.hasProcesses(): #postoje procesi koji se izvrsavaju (ready ili blocked) total processes > 0
-        proc = os.getProcess() # scheduler.getProcess()
-        if not proc:
-            time.sleep()
-        else:
-            if proc.remainingIterations > 0:
-                dowork(proc.workAmout) #for i in range(proc.workAmount) dummy work
-
-                proc.remainingIterations -= 1
-                os.sleep(proc.sleepTime, proc)
+        while self.os.hasProcesses():
+            proc = self.os.getProcess()
+            if not proc:
+                time.sleep()
             else:
-                os.exit(proc) #totall processes--
+                while proc.remainingIterations > 0:
+                    
+                    for i in range(proc.size):
+                        continue
+                
+                    proc.remainingIterations -= 1
+                    if proc.sleepInterval > 0: #ako je sleepInterval is 0, no need to sleep
+                        self.os.sleep(proc.sleepTime, proc)
+                else:
+                    self.os.finishProcess(proc)
 
-
-class OS:
-    def __init__(self, cpu):
+class CPUScheduler:
+    def __init__(self):
         self.processes = []
-        self.totalProcesses = 0
-        self.cpu = CPU(cpu)
 
-    def createProcess(self, proc):
-        self.processes.append(proc)
-        self.totalProcesses += 1
-
-    def hasProcesses(self):
-        return self.totalProcesses > 0
-    
     def getProcess(self):
-        if self.totalProcesses > 0:
+        if self.processes:
             return self.processes.pop(0)
         return None
+
+    def putProcess(self, proc):
+        self.processes.append(proc)
+
+class OS:
+    _instance = None
+
+    def __new__(cnt):
+        if not cnt._instance:
+            cnt._instance = super().__new__(cnt)
+            cnt._instance.cpu = CPU()
+        return cnt._instance
+
+    def __init__(self):
+        self.blockedProcesses = []
+        self.numberOfProcesses = 0
+        _instance.cpuScheduler = CPUScheduler()
+
+    def createProcess(self, proc):
+        cpuScheduler.putProcess(proc)
+
+    def hasProcesses(self):
+        return self.numberOfProcesses > 0
     
+    def getProcess(self):
+        return self.cpuScheduler.getProcess()
+    
+    def sleep(self, proc):
+        time.sleep(proc.sleepInterval)
+        self.blockedProcesses.append(proc)-
+        self.numberOfProcesses += 1
+
+    def finishProcess(self, proc):
+        pass
+    
+
+
+
+
+os = OS()
+
+process1 = Process(5, 10, 1)
+os.createProcess(process1)
+process2 = Process(3, 20, 2)
+os.createProcess(process2)
+process3 = Process(2, 15, 3)
+os.createProcess(process3)
+
+cpu = os.cpu
+cpu.run()
+
