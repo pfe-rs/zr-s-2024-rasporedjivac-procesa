@@ -34,7 +34,8 @@ class CPU:
 
 class CPUScheduler:
     def __init__(self):
-        self.processes = []
+        self.processes = [] #za sad je tu al kad dodamo scheduler, ovde ce biti prazno
+        numberOfProcesses = 0 
 
     def getProcess(self):
         if self.processes:
@@ -43,6 +44,7 @@ class CPUScheduler:
 
     def putProcess(self, proc):
         self.processes.append(proc)
+        self.numberOfProcesses += 1
 
 class OS:
     _instance = None
@@ -65,18 +67,21 @@ class OS:
         return self.numberOfProcesses > 0
     
     def getProcess(self):
+        for proceess in self.blockedProcesses:
+            if proceess.wakeTime <= time.time():
+                self.blockedProcesses.remove(proceess)
+                self.numberOfProcesses -= 1
+                self.cpuScheduler.putProcess(proceess)
         return self.cpuScheduler.getProcess()
     
     def sleep(self, proc):
-        time.sleep(proc.sleepInterval)
         self.blockedProcesses.append(proc)
         self.numberOfProcesses += 1
+        proc.wakeTime = time.time() + proc.sleepInterval
 
     def finishProcess(self, proc):
         pass
     
-
-
 
 
 os = OS()
