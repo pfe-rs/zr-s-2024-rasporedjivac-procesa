@@ -56,10 +56,10 @@ class OS:
     def __init__(self):
         self.blockedProcesses = []
         self.numberOfProcesses = 0
-        _instance.cpuScheduler = CPUScheduler()
+        self.cpuScheduler = CPUScheduler()
 
     def createProcess(self, proc):
-        cpuScheduler.putProcess(proc)
+        self.cpuScheduler.putProcess(proc)
 
     def hasProcesses(self):
         return self.numberOfProcesses > 0
