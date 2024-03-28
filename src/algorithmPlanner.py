@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import queue
 from queue import PriorityQueue
 from dataclasses import dataclass, field
 
