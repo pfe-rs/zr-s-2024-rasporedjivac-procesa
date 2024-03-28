@@ -69,7 +69,7 @@ class OS:
     
     def sleep(self, proc):
         time.sleep(proc.sleepInterval)
-        self.blockedProcesses.append(proc)-
+        self.blockedProcesses.append(proc)
         self.numberOfProcesses += 1
 
     def finishProcess(self, proc):
