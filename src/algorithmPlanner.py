@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+import queue
 
 class AlgorithmPlanner(ABC):
     def __init__(self):
@@ -10,8 +11,8 @@ class AlgorithmPlanner(ABC):
     
 class FirstComeFirstServe(AlgorithmPlanner):
     def __init__(self):
-        pass
+        self.procesess = queue.Queue()
     def get_process(self):
-        pass
+        return self.procesess.get()
     def put_process(self, proc):
-        pass
+        self.procesess.put(proc)
