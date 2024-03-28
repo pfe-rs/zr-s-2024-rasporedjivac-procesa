@@ -735,7 +735,7 @@
 											"top": 287,
 											"width": 135,
 											"height": 13,
-											"text": "+put_process()",
+											"text": "+put_process(proc)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -959,7 +959,7 @@
 											"top": 487,
 											"width": 139.71533203125,
 											"height": 13,
-											"text": "+put_process()",
+											"text": "+put_process(proc)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1183,7 +1183,7 @@
 											"top": 487,
 											"width": 132.4853515625,
 											"height": 13,
-											"text": "+put_process()",
+											"text": "+put_process(proc)",
 											"horizontalAlignment": 0
 										}
 									],
@@ -1837,9 +1837,9 @@
 										"$ref": "AAAAAAGOgb1Jy8g2e1M="
 									},
 									"font": "Arial;13;0",
-									"left": 652,
+									"left": 651,
 									"top": 378,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -3090,9 +3090,9 @@
 										"$ref": "AAAAAAGOhKS5iUscoco="
 									},
 									"font": "Arial;13;0",
-									"left": 671,
+									"left": 670,
 									"top": 346,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -3362,9 +3362,9 @@
 										"$ref": "AAAAAAGOhKYiz1DW9NY="
 									},
 									"font": "Arial;13;0",
-									"left": 514,
+									"left": 513,
 									"top": 272,
-									"width": 5.05908203125,
+									"width": 6.5,
 									"height": 13,
 									"alpha": -0.5235987755982988,
 									"distance": 25,
@@ -3564,7 +3564,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGOgabaA8VTCqA="
 							},
-							"name": "processes[]"
+							"name": "processes[]",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3572,7 +3573,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGOgabaA8VTCqA="
 							},
-							"name": "alg_planner"
+							"name": "alg_planner",
+							"type": ""
 						}
 					],
 					"operations": [
@@ -3738,7 +3740,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGOgbiNxsXGidI="
 							},
-							"name": "num_of_iterations"
+							"name": "num_of_iterations",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3746,7 +3749,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGOgbiNxsXGidI="
 							},
-							"name": "sleep_interval"
+							"name": "sleep_interval",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3754,7 +3758,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGOgbiNxsXGidI="
 							},
-							"name": "wake_time"
+							"name": "wake_time",
+							"type": ""
 						},
 						{
 							"_type": "UMLAttribute",
@@ -3762,7 +3767,8 @@
 							"_parent": {
 								"$ref": "AAAAAAGOgbiNxsXGidI="
 							},
-							"name": "process_size"
+							"name": "process_size",
+							"type": ""
 						}
 					]
 				},
@@ -3790,6 +3796,17 @@
 								"$ref": "AAAAAAGOgbjeYsX1ISw="
 							},
 							"name": "put_process",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGOhPFE9i12oCk=",
+									"_parent": {
+										"$ref": "AAAAAAGOhKgV0VZH1tU="
+									},
+									"name": "proc",
+									"type": ""
+								}
+							],
 							"isAbstract": true
 						}
 					],
@@ -3832,7 +3849,18 @@
 							"_parent": {
 								"$ref": "AAAAAAGOgblaGMYi4nQ="
 							},
-							"name": "put_process"
+							"name": "put_process",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGOhPFYeC511ts=",
+									"_parent": {
+										"$ref": "AAAAAAGOhKlWmFquEG8="
+									},
+									"name": "proc",
+									"type": ""
+								}
+							]
 						}
 					]
 				},
@@ -3873,7 +3901,18 @@
 							"_parent": {
 								"$ref": "AAAAAAGOgbrNncZQyeI="
 							},
-							"name": "put_process"
+							"name": "put_process",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAGOhPFr5C+Y4uc=",
+									"_parent": {
+										"$ref": "AAAAAAGOhKlz71xB+4s="
+									},
+									"name": "proc",
+									"type": ""
+								}
+							]
 						}
 					]
 				},
@@ -3967,7 +4006,8 @@
 									"_parent": {
 										"$ref": "AAAAAAGOhJ7crDhTnhI="
 									},
-									"name": "proc"
+									"name": "proc",
+									"type": ""
 								},
 								{
 									"_type": "UMLParameter",
