@@ -1,22 +1,22 @@
-from cpu import CPU
 from cpuScheduler import CPUScheduler
 import time
 
 class OS:
     _instance = None
 
-    def __new__(cnt):
-        if not cnt._instance:
-            cnt._instance = super().__new__(cnt)
-            cnt._instance.cpu = CPU()
-        return cnt._instance
-
-    def __init__(self):
-        self.blockedProcesses = []
-        self.numberOfProcesses = 0
-        self.cpuScheduler = CPUScheduler()
+    def __new__(cls, cpu, pAlgorithm):
+        if not cls._instance:
+            cls._instance = super().__new__(cls)
+    
+        cls.blockedProcesses = []
+        cls.numberOfProcesses = 0
+        cls.cpu = cpu
+        cls.cpuScheduler = CPUScheduler(pAlgorithm)
+        
+        return cls._instance
 
     def createProcess(self, proc):
+        print("Process [", proc.id, "] is created.", sep='')
         self.cpuScheduler.putProcess(proc)
 
     def hasProcesses(self):
@@ -36,5 +36,6 @@ class OS:
         proc.wakeTime = time.time() + proc.sleepInterval
 
     def finishProcess(self, proc):
+        print("Process [", proc.id, "] is finished.", sep='')
         pass
     

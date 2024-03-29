@@ -1,8 +1,8 @@
 import algorithmPlanner
 
 class CPUScheduler:
-    def __init__(self):
-        self.prioritizedAlgorithm = None
+    def __init__(self, prioritizedAlgorithm):
+        self.prioritizedAlgorithm = prioritizedAlgorithm
 
     def setPrioritizedAlgorithm(self, algorithm):
         self.prioritizedAlgorithm = algorithm
