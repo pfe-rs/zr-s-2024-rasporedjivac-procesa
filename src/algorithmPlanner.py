@@ -17,7 +17,10 @@ class FirstComeFirstServe(AlgorithmPlanner):
     def __init__(self):
         self.procesess = queue.Queue()
     def get_process(self):
-        return self.procesess.get()
+        if not self.procesess.empty():
+            return self.procesess.get()
+        else:
+            return None
     def put_process(self, proc):
         self.procesess.put(proc)
 
