@@ -22,7 +22,21 @@ class CPU:
                 if proc.remainingIterations > 0:
                     print("Process [", proc.id, "] is running.", sep='')
 
-                    for i in range(proc.size):
+                    time0 = time.time()
+                    stop = False
+
+                    for i in range(proc.breakpoint, proc.size):
+                        if proc.runningTime < 0.005:
+                            time1 = time.time()
+                            proc.runningTime = time1 - time0
+                        else:
+                            proc.breakpoint = i
+                            proc.runningTime = 0
+                            stop = True
+                            
+                    if stop:
+                        self.os.cpuScheduler.putProcess(proc)
+                        stop = False
                         continue
                 
                     proc.remainingIterations -= 1
