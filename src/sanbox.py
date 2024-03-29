@@ -18,7 +18,7 @@ cpu.setOS(os)
 #os.createProcess(process3)s
 
 print("--------------------------------")
-os.cpuScheduler.setPrioritizedAlgorithm(fcfs)
+os.cpuScheduler.setPrioritizedAlgorithm(spf)
 
 process4 = Process(5, 50, 1)
 os.createProcess(process4)
