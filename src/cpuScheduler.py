@@ -1,5 +1,3 @@
-import algorithmPlanner
-
 class CPUScheduler:
     def __init__(self, prioritizedAlgorithm):
         self.prioritizedAlgorithm = prioritizedAlgorithm

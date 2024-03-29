@@ -1,3 +1,5 @@
 https://afrodita.rcub.bg.ac.rs/~dmilicev/publishing/OS1/Dragan%20Milicev%20-%20Operativni%20sistemi%201%20-%20predavanja%202020%20-%20Deo%20III/#92 slajdovi 52-55
 
 http://os.etf.rs/OS2/predavanja/ slajdovi 2 - 26
+
+https://github.com/lazar2222/Operating-Systems-2-Project

@@ -37,5 +37,4 @@ class OS:
 
     def finishProcess(self, proc):
         print("Process [", proc.id, "] is finished.", sep='')
-        pass
     
