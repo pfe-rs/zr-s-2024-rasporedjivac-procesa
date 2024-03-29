@@ -56,7 +56,7 @@ class CPUScheduler:
     def putProcess(self, proc):
         self.processes.append(proc)
         self.numberOfProcesses += 1
-
+    
 class OS:
     _instance = None
 
@@ -75,7 +75,7 @@ class OS:
         self.cpuScheduler.putProcess(proc)
 
     def hasProcesses(self):
-        return self.numberOfProcesses + self.cpuScheduler.> 0
+        return self.numberOfProcesses + self.cpuScheduler.getNumberOfProcesses() > 0
     
     def getProcess(self):
         for proceess in self.blockedProcesses:

@@ -7,35 +7,42 @@ class AlgorithmPlanner(ABC):
     def __init__(self):
         pass
     @abstractmethod
-    def get_process(self):
+    def getProcess(self):
         pass
     @abstractmethod
-    def put_process(self, proc):
+    def putProcess(self, proc):
+        pass
+    def getNumberOfProcesses(self):
         pass
     
 class FirstComeFirstServe(AlgorithmPlanner):
     def __init__(self):
         self.procesess = queue.Queue()
-    def get_process(self):
+    def getProcess(self):
         if not self.procesess.empty():
             return self.procesess.get()
         else:
             return None
-    def put_process(self, proc):
+    def putProcess(self, proc):
         self.procesess.put(proc)
+    def getNumberOfProcesses(self):
+        return self.procesess.qsize()
 
 
 @dataclass(order=True)
 class ShortestProcessFirst(AlgorithmPlanner):
     def __init__(self):
-        self.process_queue = PriorityQueue()
+        self.priorityQueue = PriorityQueue()
     
-    def get_process(self):
-        if not self.process_queue.empty():
-            return self.process_queue.get()
+    def getProcess(self):
+        if not self.priorityQueue.empty():
+            return self.priorityQueue.get()
         else:
             return None
 
-    def put_process(self, proc):
+    def putProcess(self, proc):
         proc.numOfIterations = field(compare=False)
-        self.process_queue.put(proc)
+        self.priorityQueue.put(proc)
+    
+    def getNumberOfProcesses(self):
+        return self.priorityQueue.qsize()
