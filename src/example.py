@@ -1,3 +1,5 @@
+'''
+
 os.createProcess(proc) #scheduler.addProcess(proc) totalProcesses++
 def run():
     while os.hasProcesses(): #postoje procesi koji se izvrsavaju (ready ili blocked) total processes > 0
@@ -14,3 +16,4 @@ def run():
                 os.exit(proc) #totall processes--
 
                 
+'''
