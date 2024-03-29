@@ -1,10 +1,14 @@
 import time
+import algorithmPlanner
 
 class Process:
+    _idCounter = 0
     def __init__(self, remainingIterations, size, sleepInterval):
         self.remainingIterations = remainingIterations
         self.sleepInterval = sleepInterval
         self.size = size
+        self.id = _idCounter
+        _idCounter += 1
 
 class CPU:
     _instance = None
@@ -21,8 +25,9 @@ class CPU:
             if not proc:
                 time.sleep()
             else:
-                while proc.remainingIterations > 0:
-                    
+                if proc.remainingIterations > 0:
+                    print("Process ", proc.id, " is running")
+
                     for i in range(proc.size):
                         continue
                 
@@ -34,12 +39,18 @@ class CPU:
 
 class CPUScheduler:
     def __init__(self):
-        self.processes = [] #za sad je tu al kad dodamo scheduler, ovde ce biti prazno
-        numberOfProcesses = 0 
+        self.algorithmPlanner = algorithmPlanner.AlgorithmPlanner()
+        self.prioritizedAlgorithm = None
+
+    def setPrioritizedAlgorithm(self, algorithm):
+        self.prioritizedAlgorithm = algorithm
+
+    def getNumberOfProcesses(self):
+        return self.algorithmPlanner.numberOfProcesses
 
     def getProcess(self):
-        if self.processes:
-            return self.processes.pop(0)
+        self.prioritizedAlgorithm.NumberOfProcesses -= 1 #ne radi
+
         return None
 
     def putProcess(self, proc):
@@ -64,7 +75,7 @@ class OS:
         self.cpuScheduler.putProcess(proc)
 
     def hasProcesses(self):
-        return self.numberOfProcesses > 0
+        return self.numberOfProcesses + self.cpuScheduler.> 0
     
     def getProcess(self):
         for proceess in self.blockedProcesses:

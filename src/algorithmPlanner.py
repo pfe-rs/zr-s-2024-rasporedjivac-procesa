@@ -29,7 +29,7 @@ class FirstComeFirstServe(AlgorithmPlanner):
 class ShortestProcessFirst(AlgorithmPlanner):
     def __init__(self):
         self.process_queue = PriorityQueue()
-
+    
     def get_process(self):
         if not self.process_queue.empty():
             return self.process_queue.get()
