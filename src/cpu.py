@@ -1,6 +1,4 @@
 import time
-import cpu
-from operatingSystem import OS
 
 class CPU:
     _instance = None
@@ -17,10 +15,10 @@ class CPU:
         while self.os.hasProcesses():
             proc = self.os.getProcess()
             if not proc:
-                time.sleep(1)
+                time.sleep(0.001)
             else:
                 if proc.remainingIterations > 0:
-                    print("Process [", proc.id, "] is running.", sep='')
+                    print("{:.3f}".format(time.time()), ": Process [", proc.id, "] is running.", sep='')
 
                     time0 = time.time()
                     stop = False

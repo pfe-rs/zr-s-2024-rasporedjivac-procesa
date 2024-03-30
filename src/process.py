@@ -1,6 +1,6 @@
 class Process:
     _idCounter = 0
-    def __init__(self, iterationNumber, size, sleepInterval, breakpoint):
+    def __init__(self, iterationNumber, size, sleepInterval):
         self.remainingIterations = iterationNumber
         self.sleepInterval = sleepInterval
         self.size = size
