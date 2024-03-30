@@ -1,13 +1,6 @@
 import time
 
 class CPU:
-    _instance = None
-
-    def __new__(cnt):
-        if not cnt._instance:
-            cnt._instance = super().__new__(cnt)
-        return cnt._instance
-
     def setOS(self, os):
         self.os = os
 

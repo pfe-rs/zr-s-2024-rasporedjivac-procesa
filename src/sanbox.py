@@ -7,7 +7,7 @@ fcfs = FirstComeFirstServe()
 spf = ShortestProcessFirst()
 
 cpu = CPU()
-os = OS(cpu, fcfs)
+os = OS(fcfs)
 cpu.setOS(os)
 
 #process1 = Process(5, 10, 1)
