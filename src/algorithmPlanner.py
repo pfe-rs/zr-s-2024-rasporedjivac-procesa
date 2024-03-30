@@ -41,9 +41,7 @@ class ShortestProcessFirst(AlgorithmPlanner):
             return None
 
     def putProcess(self, proc):
-        #proc.size = field(compare=False)
         self.priorityQueue.put((proc.size, proc))
     
     def getNumberOfProcesses(self):
         return self.priorityQueue.qsize()
-

@@ -1,13 +1,6 @@
 import time
 
 class CPU:
-    _instance = None
-
-    def __new__(cnt):
-        if not cnt._instance:
-            cnt._instance = super().__new__(cnt)
-        return cnt._instance
-
     def setOS(self, os):
         self.os = os
 
@@ -20,7 +13,21 @@ class CPU:
                 if proc.remainingIterations > 0:
                     print("{:.3f}".format(time.time()), ": Process [", proc.id, "] is running.", sep='')
 
-                    for i in range(proc.size):
+                    time0 = time.time()
+                    stop = False
+
+                    for i in range(proc.breakpoint, proc.size):
+                        if proc.runningTime < 0.005:
+                            time1 = time.time()
+                            proc.runningTime = time1 - time0
+                        else:
+                            proc.breakpoint = i
+                            proc.runningTime = 0
+                            stop = True
+                            
+                    if stop:
+                        self.os.cpuScheduler.putProcess(proc)
+                        stop = False
                         continue
                 
                     proc.remainingIterations -= 1
