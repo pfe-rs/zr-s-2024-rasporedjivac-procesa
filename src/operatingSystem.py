@@ -23,6 +23,15 @@ class OS:
     def hasProcesses(self):
         return self.numberOfProcesses + self.cpuScheduler.getNumberOfProcesses() > 0
     
+    def updateProcesses(self):
+        self.getSystem().mutex.acquire()
+        for process in self.blockedProcesses:
+            if process.wakeTime <= time.time():
+                self.blockedProcesses.remove(process)
+                self.numberOfProcesses -= 1
+                self.cpuScheduler.putProcess(process)
+        self.getSystem().mutex.release()
+    
     def getProcess(self):
         self.sys.mutex.aquire()
         for proceess in self.blockedProcesses:
