@@ -32,7 +32,6 @@ class CPU:
                 
                     proc.remainingIterations -= 1
                     if proc.sleepInterval > 0: #ako je sleepInterval is 0, no need to sleep
-                        print("Process [", proc.id, "] is sleeping.", sep='')
                         self.os.sleep(proc)
                 else:
                     self.os.finishProcess(proc)
