@@ -33,13 +33,9 @@ class OS:
         self.getSystem().mutex.release()
     
     def getProcess(self):
-        self.sys.mutex.aquire()
-        for proceess in self.blockedProcesses:
-            if proceess.wakeTime <= time.time():
-                self.blockedProcesses.remove(proceess)
-                self.numberOfProcesses -= 1
-                self.cpuScheduler.putProcess(proceess)
+        self.updateProcesses()
         
+        self.getSystem().mutex.acquire()
         proc = self.cpuScheduler.getProcess()
         self.getSystem().mutex.release()
         return proc

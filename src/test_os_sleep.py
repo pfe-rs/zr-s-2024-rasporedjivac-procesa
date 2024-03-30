@@ -22,19 +22,25 @@ def test_os_sleep():
     os.createProcess(p2)
     os.createProcess(p3)
     
-    dt = 3.0
+    dt = 0.001
     
     t1_0 = time.time()
     os.sleep(p1)
+    while p1 in os.blockedProcesses:
+        continue
     t1_1 = time.time()
     assert abs(t1_1 - (t1_0 + time1)) <= dt
     
     t2_0 = time.time()
     os.sleep(p2)
+    while p2 in os.blockedProcesses:
+        continue
     t2_1 = time.time()
     assert abs(t2_1 - (t2_0 - time2)) <= dt
     
     t3_0 = time.time()
     os.sleep(p3)
+    while p3 in os.blockedProcesses:
+        continue
     t3_1 = time.time()
     assert abs(t3_1 - (t3_0 - time3)) <= dt
